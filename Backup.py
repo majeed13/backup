@@ -331,13 +331,9 @@ def get_bucket_directory(args):
 
 def main():
     path, bucketName = get_bucket_directory(args)
-    # id = boto3.client("sts").get_caller_identity().get("Account")
-    # print("account id=", id)
-
-    # sys.exit()
     ######### UNIQUE BUCKET NAME #########
     # bucketName = "prog3-backup-test1561"
-    # bucketName = "css436-mybucket45"
+    # bucketName = "mybucket45"
     ######################################
     s3 = boto3.resource("s3")
     # path = args.directory
@@ -345,7 +341,6 @@ def main():
     totalBytes = 0
 
     create_bucket(s3, bucketName)
-    #sys.exit()
     ###### check if there is a directory with the same name ######
     exist, modDate = exists(s3, bucketName, baseUploadDir)
     if exist == False and modDate is None:
